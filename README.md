@@ -1,13 +1,15 @@
-# AI Quote
+# Markdown Quote
 
-一个极简的 VSCode 扩展：把选中的文本一键转成 Markdown 引用格式，并在开头标注为 AI 回答。
+一个极简的 VSCode 扩展：把选中的文本一键转成 Markdown 引用格式，并可选标注为 AI 回答。
 
 ## 功能
 
-- 右键菜单：选中文本 → 「转成 AI 引用」
-- 快捷键：选中文本 → `Cmd+Alt+Q`（Windows/Linux：`Ctrl+Alt+Q`）
+两个命令，都挂在右键菜单，也各有快捷键：
 
-转换效果：
+- **转为引用**：纯 `>` 引用，不加任何标注 —— `Cmd+Alt+Q`（Win/Linux：`Ctrl+Alt+Q`）
+- **转为 AI 引用**：引用 + 顶部 AI 标注行 —— `Cmd+Alt+Shift+Q`（Win/Linux：`Ctrl+Alt+Shift+Q`）
+
+「转为 AI 引用」效果：
 
 ```
 > **🤖 AI 回答**
@@ -17,10 +19,10 @@
 
 ## 配置
 
-在 VSCode 设置里搜索 `AI Quote`：
+在 VSCode 设置里搜索 `Markdown Quote`：
 
-- `aiQuote.label`：引用块开头的标注文案，默认 `🤖 AI 回答`
-- `aiQuote.style`：
+- `markdownQuote.label`：AI 引用的标注文案，默认 `🤖 AI 回答`
+- `markdownQuote.style`：
   - `bold`（默认）：加粗标注行
   - `alert`：使用 GitHub `[!NOTE]` 提示块样式
 

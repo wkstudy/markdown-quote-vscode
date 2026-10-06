@@ -1,7 +1,7 @@
 {
-  "name": "ai-quote",
-  "displayName": "AI Quote",
-  "description": "把选中的文本转成 Markdown 引用并标注为 AI 回答",
+  "name": "markdown-quote",
+  "displayName": "Markdown Quote",
+  "description": "把选中的文本一键转成 Markdown 引用，可选标注为 AI 回答",
   "version": "0.0.1",
   "publisher": "kaiwang",
   "engines": {
@@ -11,20 +11,30 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:aiQuote.convertSelection"
+    "onCommand:markdownQuote.convert",
+    "onCommand:markdownQuote.convertAi"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "aiQuote.convertSelection",
-        "title": "转成 AI 引用"
+        "command": "markdownQuote.convert",
+        "title": "转为引用"
+      },
+      {
+        "command": "markdownQuote.convertAi",
+        "title": "转为 AI 引用"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "aiQuote.convertSelection",
+          "command": "markdownQuote.convert",
+          "when": "editorHasSelection",
+          "group": "1_modification"
+        },
+        {
+          "command": "markdownQuote.convertAi",
           "when": "editorHasSelection",
           "group": "1_modification"
         }
@@ -32,21 +42,27 @@
     },
     "keybindings": [
       {
-        "command": "aiQuote.convertSelection",
+        "command": "markdownQuote.convert",
         "key": "ctrl+alt+q",
         "mac": "cmd+alt+q",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "markdownQuote.convertAi",
+        "key": "ctrl+alt+shift+q",
+        "mac": "cmd+alt+shift+q",
         "when": "editorHasSelection"
       }
     ],
     "configuration": {
-      "title": "AI Quote",
+      "title": "Markdown Quote",
       "properties": {
-        "aiQuote.label": {
+        "markdownQuote.label": {
           "type": "string",
           "default": "🤖 AI 回答",
-          "description": "引用块开头的标注文案"
+          "description": "AI 引用的标注文案"
         },
-        "aiQuote.style": {
+        "markdownQuote.style": {
           "type": "string",
           "enum": [
             "bold",
