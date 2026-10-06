@@ -1,0 +1,61 @@
+{
+  "name": "ai-quote",
+  "displayName": "AI Quote",
+  "description": "把选中的文本转成 Markdown 引用并标注为 AI 回答",
+  "version": "0.0.1",
+  "publisher": "kaiwang",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:aiQuote.convertSelection"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiQuote.convertSelection",
+        "title": "转成 AI 引用"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "aiQuote.convertSelection",
+          "when": "editorHasSelection",
+          "group": "1_modification"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "aiQuote.convertSelection",
+        "key": "ctrl+alt+q",
+        "mac": "cmd+alt+q",
+        "when": "editorHasSelection"
+      }
+    ],
+    "configuration": {
+      "title": "AI Quote",
+      "properties": {
+        "aiQuote.label": {
+          "type": "string",
+          "default": "🤖 AI 回答",
+          "description": "引用块开头的标注文案"
+        },
+        "aiQuote.style": {
+          "type": "string",
+          "enum": [
+            "bold",
+            "alert"
+          ],
+          "default": "bold",
+          "description": "bold = 加粗标注行；alert = GitHub [!NOTE] 提示块"
+        }
+      }
+    }
+  }
+}
